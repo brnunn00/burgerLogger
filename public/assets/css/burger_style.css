@@ -1,0 +1,9 @@
+body, html {
+    background-image: url("../public/assets/images/burger-wallpaper.jpg");
+ 
+   }
+
+   .burgerTitle{
+       font-weight: bold;
+       font-size: 18px;
+   }
