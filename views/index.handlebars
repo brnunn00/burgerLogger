@@ -1,38 +1,33 @@
-<h1>Cats!</h1>
+<h1>Burger-Bliss awaits!</h1>
 
-<h2>Cats that are not sleepy!</h2>
+<h2>Burgers waiting to be devoured!</h2>
 
-<ul>
+
   {{#each burgers}}
+  <ul>
     {{#unless devoured}}
-      {{burger_name}}
+    {{> burgerparts/burger-block}} 
     {{/unless}}
+    </ul>
   {{/each}}
-</ul>
 
-<h2>Cats that are sleepy!</h2>
+
+<h2>Burgers which have been devoured. Yum!</h2>
 
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{burger_name}}
+  {{> burgerparts/burger-block }} 
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Cat</h2>
-<form class="create-form">
+<h2>Add a Burger, of which, you shall devour in the future. </h2>
+<form class="burgerEntry">
 
   <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="burgertext">Burger Name:</label>
+    <input type="text" id="burgertext" name="name">
   </div>
-
-  <div class="form-group">
-    <label for="devoured">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Sleepy!<br>
-    <input type="radio" name="devoured" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
+  <button type="submit">Prepare the sweet meats for devourment</button>
 </form>

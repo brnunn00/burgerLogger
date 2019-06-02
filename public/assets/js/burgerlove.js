@@ -1,43 +1,43 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-    $(".change-sleep").on("click", function(event) {
+    $(".burgerToggler").on("click", function(event) {
       var id = $(this).data("id");
-      var newSleep = $(this).data("newsleep");
-  
-      var newSleepState = {
-        sleepy: newSleep
+      var devStatus = $(this).data("devoured");
+      if (devStatus == false){
+        devStatus = true;
+      } else {
+        devStatus = false;
+      }
+      var toggleTo = {
+        devoured: devStatus
       };
-  
+  console.log("sending " + id + " to server as " +devStatus)
       // Send the PUT request.
-      $.ajax("/api/cats/" + id, {
+      $.ajax("/api/burgers/" + id, {
         type: "PUT",
-        data: newSleepState
+        data: toggleTo
       }).then(
         function() {
-          console.log("changed sleep to", newSleep);
-          // Reload the page to get the updated list
           location.reload();
         }
       );
     });
   
-    $(".create-form").on("submit", function(event) {
+    $(".burgerEntry").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
-  
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
+
+      //only need name as rest is automatically set.
+      var burgerBuilder = {
+        burger_name: $("#burgertext").val().trim()
       };
   
       // Send the POST request.
-      $.ajax("/api/cats", {
+      $.ajax("/api/burgers", {
         type: "POST",
-        data: newCat
+        data: burgerBuilder
       }).then(
-        function() {
-          console.log("created new cat");
-          // Reload the page to get the updated list
+        function() {              
           location.reload();
         }
       );
